@@ -40,6 +40,6 @@ Neither skill requires a vault. They work on their own.
 
 ## Origin
 
-Distilled from two handouts written for the 2nd Brain Intensive, Breakthrough EDU's two-day course for business owners. The craft in them came from designing real operating bases and real dashboards; the specifics of those businesses are not in here.
+Distilled from two handouts written for the 2nd Brain Intensive, the two days that open a Breakthrough Circle membership at Breakthrough EDU. The craft in them came from designing real operating bases and real dashboards; the specifics of those businesses are not in here.
 
 MIT licensed.
