@@ -4,7 +4,7 @@ Two Claude Code skills for a business owner who has data but no system that answ
 
 | Skill | Job |
 |---|---|
-| `breakthrough-base-schema-design` | Before the data exists. Interviews you, finds the one unit of work your business repeats, and hands you a Lark Base blueprint with a phased build order and an acceptance test. |
+| `breakthrough-base-schema-design` | Before the data exists. Interviews you, finds the one unit of work your business repeats, settles where every kind of record is born, and hands you a Lark Base blueprint with a phased build order, an acceptance test, and a Plan Sheet a fresh session builds the Base from. |
 | `breakthrough-database-to-dashboard` | After the data exists. Reads whatever you already have (Airtable, Notion, Sheets, Lark Base, Excel, CSV) and returns a plain-language account of it, a findings list, and one page answering your most urgent money question. |
 
 They sit either side of the same gap. Design first if you have nothing yet; go straight to the dashboard if you already have five years of rows in a spreadsheet nobody trusts.
@@ -16,6 +16,10 @@ npx skills add -g breakthrough-edu/breakthrough-database-skills
 ```
 
 One command installs both. The `-g` installs them for your user account; without it they land in whatever folder you happened to be standing in, which is the most common reason a skill "did not install".
+
+## One home per kind of record
+
+A Base that pulls together what lives in your accounting software, your CRM, your HR system and your own spreadsheets is a data hub. It only stays trustworthy if every kind of record has one home: invoices are born in the accounting software, so the Base holds a copy that flows one way, in, and nobody edits it there. Some records are born in the Base itself (projects, tasks). Some are requested in the Base and issued elsewhere (an order the accountant turns into an invoice). Each kind gets exactly one home and one direction, and the blueprint shows which is which, who owns each copy, and how far each connection has actually been proven.
 
 ## Why these are skills and not prompts
 
@@ -34,7 +38,7 @@ Neither skill requires a vault. They work on their own.
 
 ## What they do not do
 
-- `breakthrough-base-schema-design` designs; it does not build the Base through the API. The blueprint is what a builder follows.
+- `breakthrough-base-schema-design` designs; it does not build the Base in the design session. It hands over a Plan Sheet, and a new session builds from it step by step with the Lark skills you have installed. It does not pick connector tools or promise that your software can be connected: each connection is written down at the state it has been proven to.
 - `breakthrough-database-to-dashboard` produces a snapshot, not a live dashboard. It says so on the page, with the as-of date printed, so nobody reads a three-week-old number as today's.
 - Neither invents figures. What cannot be found is written as "not tracked", never as zero, and each dashboard ends with what that data cannot answer.
 

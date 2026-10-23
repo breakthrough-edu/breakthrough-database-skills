@@ -2,28 +2,28 @@
 name: breakthrough-base-schema-design
 description: >
   Design a Lark Base for the user's business through a guided interview: find
-  the one unit of work the business repeats, then derive the tables, links,
-  formulas and a phased build order from the numbers the owner actually wants
-  to see. Ends with a Base Blueprint document plus an acceptance test, ready to
-  hand to whoever builds it. Use when the user wants a database designed for
-  their business ("design my Lark Base", "what tables do I need", "help me
-  build a database for my company", "帮我设计多维表格", "我的业务要怎么建表"),
-  when their existing base has become one giant table and they want it
-  restructured, or when they are unsure whether something should be a field, a
-  select, or its own table. NOT for physically building or editing a Base via
-  API or lark-cli (this skill produces the blueprint; building is a separate
-  job), NOT for turning an already-filled database into reports or dashboards
-  (that is breakthrough-database-to-dashboard), and NOT for setting up a
-  second-brain vault (that is my-second-brain, installed separately).
+  the one unit of work the business repeats, settle where every kind of record
+  is born (the Base itself, or software they already use such as accounting, a
+  CRM, HR or an online shop) and which way it flows, then derive the tables,
+  links and formulas from the numbers the owner wants to see. Ends with a Base
+  Blueprint, an acceptance test, and a Plan Sheet a fresh session follows to
+  build the Base. Use when the user wants a database or data hub designed
+  ("design my Lark Base", "what tables do I need", "帮我设计多维表格",
+  "我的业务要怎么建表", "data hub", "把会计软件的资料打通进 Base", "哪个系统为准"),
+  when one giant table needs restructuring, or when unsure whether something
+  is a field, a select, or its own table. NOT the build itself (a fresh
+  session follows the Plan Sheet), NOT reports or dashboards from a filled
+  database (breakthrough-database-to-dashboard), NOT a second-brain vault
+  (my-second-brain).
 ---
 
 # Breakthrough Base Schema Design
 
-This skill runs one job: interview a business owner, find the shape of their business, and design a Lark Base that fits it. The job ends when they hold a blueprint they could hand to someone and say "build this."
+This skill runs one job: interview a business owner, find the shape of their business, and design a Lark Base that fits it. The job ends when they hold a blueprint they could hand to someone and say "build this", and a Plan Sheet a fresh session can build it from.
 
 **This is a task, not an identity.** It governs the design conversation it was invoked for and nothing beyond it. Every other instruction in the session stays in force exactly as it was: the user's own `CLAUDE.md`, their second-brain vault and its rules if they have one, and any other installed skill. If the finished blueprint gets filed into a `my-second-brain` vault, the vault's own filing law decides where it lands, never this file.
 
-**Who you are talking to.** A business owner or operations lead: smart about their business, not necessarily technical. ⛔ Never say schema, entity, normalisation, cardinality, or foreign key to them. Say table, row, link, and rollup. You do not hand people templates; you interview them and design a base that fits.
+**Who you are talking to.** A business owner or operations lead: smart about their business, not necessarily technical. ⛔ Never say schema, entity, normalisation, cardinality, foreign key, or system of record to them. Say table, row, link, rollup, and home (正本, where a record is born). If they say "source of truth" themselves, use their words. You do not hand people templates; you interview them and design a base that fits.
 
 ## The one idea
 
@@ -36,6 +36,8 @@ Every operating base is a **spine** plus **orbits**. The spine is the one thing 
 
 Businesses differ enormously in what the spine is called. They do not differ much in the fact that there is one. Find it first; everything else falls out of it.
 
+**Every kind of record also has one home**: the one place it is born and changed. Some homes are the Base itself. Others are software the business already uses: invoices in the accounting software, customers in a CRM, staff in HR. When the home is elsewhere, the Base holds a copy that flows one way, in, and nobody edits it here. The rule is per kind of record: one Base can hold copies flowing in and requests flowing out side by side, but each kind of record has exactly one home and one direction. This is what lets the Base become the company's data hub without the same fact drifting apart in two places.
+
 ## How the conversation runs
 
 - **One question at a time. Wait for the answer.** Never batch questions into a list.
@@ -44,7 +46,7 @@ Businesses differ enormously in what the spine is called. They do not differ muc
 - When an answer is vague, ask for a real example with real names and real numbers. "A client" is useless. "Last month's job for Tan Sri's foundation, forty two thousand, paid late" is designable.
 - When there is a fork, name both sides, state the tradeoff in one sentence, and recommend one.
 - **Say when you are guessing.** Never invent a Lark capability you are not sure exists, and never invent a number the owner did not say. The blueprint contains their figures or blanks, nothing made up.
-- If they say "just give me the standard one", decline once and explain that the standard one is what fails. Then offer the fast path: three questions (what is the unit of work, how does money come in, what do you pay out per unit), a Phase 1 blueprint from those answers, and the full interview later once they have used it.
+- If they say "just give me the standard one", decline once and explain that the standard one is what fails. Then offer the fast path: four questions (what is the unit of work, how does money come in, what do you pay out per unit, and where does the invoice number come from), a Phase 1 blueprint from those answers, and the full interview later once they have used it.
 
 ## The path, and what to load when
 
@@ -52,25 +54,28 @@ Interview in phases, then design, then challenge the design, then deliver the bl
 
 | When | Read |
 |---|---|
-| Before the first interview question | [references/interview.md](references/interview.md) |
+| Before the first interview question | [references/interview.md](references/interview.md) and [references/data-hub-roles.md](references/data-hub-roles.md) (where each kind of record is born is asked from Phase 0 onward) |
 | Turning answers into tables, fields, and links | [references/derivation-rules.md](references/derivation-rules.md) |
 | Shaping the design layer by layer against a proven base | [references/reference-architecture.md](references/reference-architecture.md) |
 | Writing any formula, choosing any field type, sequencing any build step | [references/lark-mechanics.md](references/lark-mechanics.md) |
 | Presenting the blueprint, phasing it, closing the session | [references/blueprint-and-build.md](references/blueprint-and-build.md) |
+| Writing the Plan Sheet | [references/plan-sheet.md](references/plan-sheet.md) |
 
 ## Finishing
 
-Close with four things, in the shape [references/blueprint-and-build.md](references/blueprint-and-build.md) specifies:
+Close with five things, in the shape [references/blueprint-and-build.md](references/blueprint-and-build.md) specifies:
 
-1. The Base Blueprint document.
+1. The Base Blueprint document, including where each kind of record is born.
 2. The Phase 1 build order, numbered, with nothing in it that is not Phase 1.
-3. The metric traceability table, framed as the acceptance test: build it, enter two real records, and if any of these numbers is wrong, the design is wrong and they come back.
+3. The metric traceability table, framed as the acceptance test: build it, enter two real records, and if any of these numbers is wrong, the design is wrong and they come back. Every line to another system is reported at the state it has proven, never as done.
 4. One sentence on what was deliberately left out and what would have to change for it to be worth adding.
+5. The Plan Sheet ([references/plan-sheet.md](references/plan-sheet.md)), with one line on how to use it: open a new session and ask it to build the Base from the sheet.
 
-Offer to save the blueprint as a markdown file where the user chooses. In a second-brain vault, their own filing rules decide the destination.
+Offer to save the blueprint and the Plan Sheet as markdown files where the user chooses. In a second-brain vault, their own filing rules decide the destination.
 
 ## What this skill is not
 
-- Not a builder. It designs; it does not create tables through the API. When the user wants the blueprint built for them, that is a separate piece of work they ask for separately, and the blueprint's build order is exactly what it would follow.
+- Not a builder. It designs; it does not create tables in this session. Building happens in a fresh session that follows the Plan Sheet with the Lark skills the user has installed, so the design conversation and the build never share one crowded session.
+- Not a connector. It records where each copy comes from, who owns it and how far it has been proven. It does not choose connector tools, promise that a given software can be connected, or build syncs.
 - Not a reporting skill. Turning a filled base into dashboards is breakthrough-database-to-dashboard.
 - Not a vault or second-brain tool. It coexists with my-second-brain and touches nothing that skill governs.
